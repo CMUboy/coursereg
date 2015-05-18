@@ -21,24 +21,21 @@ RSpec.describe Course, type: :model do
     expect(subject).to be_invalid
   end
 
-  it "is valid with a number, title, and enrollment capacity" do
-    subject.number = "RUBY DL210"
-    subject.title = "Applications with Ruby on Rails"
-    subject.enrollment_capacity = 30
-    expect(subject).to be_valid
-  end
+  describe "course validations" do
+    before :each do
+      @course = Course.new
+      @course.number = "RUBY DL210"
+      @course.title = "Applications with Ruby on Rails"
+      @course.enrollment_capacity = 30
+    end
 
-  it "is invalid without a positive enrollment capacity" do
-    subject.number = "RUBY DL210"
-    subject.title = "Applications with Ruby on Rails"
-    subject.enrollment_capacity = 0
-    expect(subject).to be_invalid
-  end
+    it "is valid with a number, title, and enrollment capacity" do
+      expect(@course).to be_valid
+    end
 
-  it "is valid with a positive enrollment capacity" do
-    subject.number = "RUBY DL210"
-    subject.title = "Applications with Ruby on Rails"
-    subject.enrollment_capacity = 30
-    expect(subject).to be_valid
+    it "is invalid without a positive enrollment capacity" do
+      @course.enrollment_capacity = 0
+      expect(subject).to be_invalid
+    end
   end
 end
