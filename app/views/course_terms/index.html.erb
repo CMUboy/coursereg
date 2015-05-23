@@ -1,20 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Course Terms</h1>
+<h2>Course Terms</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Term</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @course_terms.each do |course_term| %>
       <tr>
-        <td><%= link_to 'Show', course_term %></td>
-        <td><%= link_to 'Edit', edit_course_term_path(course_term) %></td>
-        <td><%= link_to 'Destroy', course_term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to course_term, course_term %></td>
+        <td>
+          <%= link_to course_term, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Course term', new_course_term_path %>
+<%= link_to 'New Course term', new_course_term_path, class: 'btn btn-default'  %>

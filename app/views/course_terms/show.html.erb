@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_course_term_path(@course_term) %> |
-<%= link_to 'Back', course_terms_path %>
+<h2><%= @course_term %></h2>
+
+<%= link_to 'Edit', edit_course_term_path(@course_term), class: 'btn btn-default' %>
+<%= link_to 'Back', course_terms_path, class: 'btn btn-default' %>

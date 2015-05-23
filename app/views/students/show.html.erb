@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<h2><%= @student.last_name %>, <%= @student.first_name %> (<%= @student.number %>)</h2>
+
+<%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default'  %>
+<%= link_to 'Back', students_path, class: 'btn btn-default'  %>
