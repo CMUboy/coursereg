@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li><a href="<%= register_path %>">Registration</a></li>
+  <li><%= @course_term %></li>
+  <li class="active"><%= @course %></li>
+</ol>
+
+<h2>Select a Student</h2>
+
+<%= form_for(@enrollment, url: complete_registration_path, html: {class: 'form-inline'}) do |f| %>
+  <div class="field form-group">
+    <div class="col-sm-10">
+      <%= f.collection_select(:student,
+                              @students, :id, :to_s,
+                              {prompt: true, disabled: lambda { |student| student.enrolled?(@course, @course_term) }},
+                              {class: 'form-control'}) %>
+    </div>
+  </div>
+  <%= f.submit 'Register', class: 'btn btn-primary' %>
+  <%= hidden_field :enrollment, :course_term, value: @course_term.id %>
+  <%= hidden_field :enrollment, :course, value: @course.id %>
+  <div>
+    <p style="font-style:italic;color:red">
+      Note: A student cannot be selected if the student has already been enrolled in this course for this term.
+    </p>
+  </div>
+<% end %>

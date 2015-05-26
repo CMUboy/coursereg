@@ -1,0 +1,18 @@
+<% if flash[:message] %>
+  <div class="alert alert-success" role="alert"><%= flash[:message] %></div>
+<% end %>
+
+<ol class="breadcrumb">
+  <li class="active">Registration</li>
+</ol>
+
+<h2>Select a Term</h2>
+
+<%= form_for(@enrollment, url: select_course_path, html: {class: 'form-inline'}) do |f| %>
+  <div class="field form-group">
+    <div class="col-sm-10">
+      <%= f.collection_select(:course_term, @course_terms, :id, :to_s, {prompt: true}, {class: 'form-control'}) %>
+    </div>
+  </div>
+  <%= f.submit 'Next', class: 'btn btn-primary' %>
+<% end %>

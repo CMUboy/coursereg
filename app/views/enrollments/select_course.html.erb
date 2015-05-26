@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+  <li><a href="<%= register_path %>">Registration</a></li>
+  <li class="active"><%= @course_term %></li>
+</ol>
+
+<h2>Select a Course</h2>
+
+<%= form_for(@enrollment, url: select_student_path, html: {class: 'form-inline'}) do |f| %>
+  <div class="field form-group">
+    <div class="col-sm-10">
+      <%= f.collection_select(:course,
+                              @courses, :id, :to_s,
+                              {prompt: true, disabled: lambda { |course| !course.enrollable?(@course_term) }},
+                              {class: 'form-control'}) %>
+    </div>
+  </div>
+  <%= f.submit 'Next', class: 'btn btn-primary' %>
+  <%= hidden_field :enrollment, :course_term, value: @course_term.id %>
+  <div>
+    <p style="font-style:italic;color:red">Note: A course cannot be selected if its enrollment capacity has been exceeded.</p>
+  </div>
+<% end %>
