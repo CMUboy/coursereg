@@ -4,4 +4,16 @@ class Course < ActiveRecord::Base
 
   has_many :enrollments
   has_many :students, through: :enrollments
+
+  def enrollment_count(course_term)
+    enrollments.find_all { |enrollment| enrollment.course_term == course_term }.count
+  end
+
+  def enrollable?(course_term)
+    enrollment_count(course_term) < enrollment_capacity
+  end
+
+  def to_s
+    "#{number}: #{title}"
+  end
 end
