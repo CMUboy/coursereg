@@ -1,6 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @student.last_name %>, <%= @student.first_name %> (<%= @student.number %>)</h2>
+<h2><%= @student %></h2>
+
+<% if !@enrollments_by_course_term.empty? %>
+  <h2>Enrollments</h2>
+  <% @enrollments_by_course_term.each do |course_term, enrollments| %>
+    <h3><%= link_to course_term, course_term %></h3>
+    <ul>
+      <% enrollments.each do |enrollment| %>
+        <li><%= link_to enrollment.course, enrollment.course %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default'  %>
 <%= link_to 'Back', students_path, class: 'btn btn-default'  %>

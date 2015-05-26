@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @enrollments_by_course_term = @student.enrollments.group_by(&:course_term)
   end
 
   # GET /students/new

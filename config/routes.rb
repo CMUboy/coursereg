@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   post 'select_student', to: 'enrollments#select_student'
   post 'complete_registration', to: 'enrollments#complete_registration'
 
-  #get 'register/:course_term_id', to: 'enrollments#list_courses_by_term'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
