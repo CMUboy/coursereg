@@ -24,8 +24,7 @@ class EnrollmentsController < ApplicationController
     enrollment.student = student
     enrollment.save
 
-    flash[:message] = 'Course enrollment successful. Enroll another?'
-    redirect_to register_path
+    redirect_to register_path, notice: 'Course enrollment successful. Enroll another?'
   end
 
   private

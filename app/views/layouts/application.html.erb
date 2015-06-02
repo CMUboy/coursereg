@@ -7,14 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="main-container" class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= yield %>
-    </div>
-  </div>
-</div>
-
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+<main role="main">
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</main>
 </body>
 </html>
