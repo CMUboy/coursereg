@@ -17,6 +17,24 @@ Course.create({number: 'RUBY DL210', title: 'Applications with Ruby on Rails', e
 Course.create({number: 'RUBY DL310', title: 'Advanced Topics in Ruby on Rails', enrollment_capacity: 2})
 
 # Create some students
-Student.create({number: '1805122301', first_name: 'Joseph', last_name: 'Smith'})
-Student.create({number: '1804071001', first_name: 'Emma', last_name: 'Hale'})
-Student.create({number: '1801060101', first_name: 'Birgham', last_name: 'Young'})
+jsmith = Student.create({number: '1805122301', first_name: 'Joseph', last_name: 'Smith'})
+ehale = Student.create({number: '1804071001', first_name: 'Emma', last_name: 'Hale'})
+byoung = Student.create({number: '1801060101', first_name: 'Birgham', last_name: 'Young'})
+
+# Create some accounts
+Account.create({email: Rails.application.secrets.admin_email,
+                password: Rails.application.secrets.admin_password,
+                password_confirmation: Rails.application.secrets.admin_password,
+                role: :admin})
+Account.create({email: 'jsmith@zion.edu',
+                password: 'password',
+                password_confirmation: 'password',
+                student: jsmith})
+Account.create({email: 'ehale@zion.edu',
+                password: 'password',
+                password_confirmation: 'password',
+                student: ehale})
+Account.create({email: 'byoung@zion.edu',
+                password: 'password',
+                password_confirmation: 'password',
+                student: byoung})
