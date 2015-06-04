@@ -12,9 +12,18 @@ CourseTerm.create({year: 2015, season: :fall})
 CourseTerm.create({year: 2016, season: :winter})
 
 # Create some courses
-Course.create({number: 'RUBY DL110', title: 'Ruby: The Core Language', enrollment_capacity: 2})
-Course.create({number: 'RUBY DL210', title: 'Applications with Ruby on Rails', enrollment_capacity: 2})
-Course.create({number: 'RUBY DL310', title: 'Advanced Topics in Ruby on Rails', enrollment_capacity: 2})
+Course.create({number: 'RUBY DL110',
+               title: 'Ruby: The Core Language',
+               description: 'The first course introduces fundamental concepts of the Ruby programming language while students begin to build a portfolio of applications on the Rails framework. Through lecture, class discussion and individual and group project work, the class emphasizes the development of ruby engineering best practices.',
+               enrollment_capacity: 2})
+Course.create({number: 'RUBY DL210',
+               title: 'Applications with Ruby on Rails',
+               description: 'Students continue to learn how to design, develop, test/debug and deploy applications with Rails platform. Working in small teams on a larger web application project that meets unique business requirements supplied by instructor, students gain practical work place skills.',
+               enrollment_capacity: 2})
+Course.create({number: 'RUBY DL310',
+               title: 'Advanced Topics in Ruby on Rails',
+               description: 'The third course focuses on advanced functionalities of Ruby with students applying what they learn in a substantial original project, individually or in groups. Class meetings will include demonstrations, reviews and consultations on student work in progress. Upon completion of this final course in the program, students will have a portfolio of applications demonstrating in-demand Ruby and Ruby on Rails skills and core competencies.',
+               enrollment_capacity: 2})
 
 # Create some students
 jsmith = Student.create({number: '1805122301', first_name: 'Joseph', last_name: 'Smith'})
