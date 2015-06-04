@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% if current_account.admin? %>
 <h2><%= @student %></h2>
 
 <% if !@enrollments_by_course_term.empty? %>
@@ -13,6 +13,19 @@
     </ul>
   <% end %>
 <% end %>
-
 <%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-default'  %>
 <%= link_to 'Back', students_path, class: 'btn btn-default'  %>
+<% end %>
+<% if current_account.student? %>
+<% if @enrollments_by_course_term.empty? %>
+<p>You are not enrolled in any courses.</p>
+<% end %>
+<% @enrollments_by_course_term.each do |course_term, enrollments| %>
+<h4><%= course_term %></h4>
+<ul>
+  <% enrollments.each do |enrollment| %>
+    <li><%= enrollment.course %></li>
+  <% end %>
+</ul>
+<% end %>
+<% end %>

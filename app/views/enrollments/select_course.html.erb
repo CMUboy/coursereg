@@ -5,7 +5,7 @@
 
 <h2>Select a Course</h2>
 
-<%= form_for(@enrollment, url: select_student_path, html: {class: 'form-inline'}) do |f| %>
+<%= form_for(@enrollment, url: current_account.student? ? complete_registration_path : select_student_path, html: {class: 'form-inline'}) do |f| %>
   <div class="field form-group">
     <div class="col-sm-10">
       <%= f.collection_select(:course,
@@ -14,8 +14,11 @@
                               {class: 'form-control'}) %>
     </div>
   </div>
-  <%= f.submit 'Next', class: 'btn btn-primary' %>
+  <%= f.submit current_account.student? ? 'Register' : 'Next', class: 'btn btn-primary' %>
   <%= hidden_field :enrollment, :course_term, value: @course_term.id %>
+  <% if current_account.student? %>
+  <%= hidden_field :enrollment, :student, value: current_account.student.id %>
+  <% end %>
   <div>
     <p style="font-style:italic;color:red">Note: A course cannot be selected if its enrollment capacity has been exceeded.</p>
   </div>

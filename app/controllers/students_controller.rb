@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, except: :show
 
   # GET /students
   # GET /students.json
@@ -10,6 +11,12 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    if !current_account.admin?
+      unless @student == current_account.student
+        redirect_to root_path, alert: "You are not allowed to access this feature."
+      end
+    end
+
     @enrollments_by_course_term = @student.enrollments.group_by(&:course_term)
   end
 

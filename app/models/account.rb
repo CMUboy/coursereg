@@ -8,6 +8,10 @@ class Account < ActiveRecord::Base
     self.role ||= :student
   end
 
+  def name
+    student.nil? ? 'Administrator' : student.first_name
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,5 +1,6 @@
 class CourseTermsController < ApplicationController
   before_action :set_course_term, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only
 
   # GET /course_terms
   # GET /course_terms.json
