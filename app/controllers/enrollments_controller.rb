@@ -22,9 +22,10 @@ class EnrollmentsController < ApplicationController
     enrollment.course_term = course_term
     enrollment.course = course
     enrollment.student = student
-    enrollment.save
-
-    redirect_to register_path, notice: 'Course enrollment successful. Enroll another?'
+    if enrollment.save
+      EnrollmentMailer.registration_email(current_account, enrollment).deliver_later if current_account.student?
+      redirect_to register_path, notice: 'Course enrollment successful. Enroll another?'
+    end
   end
 
   private

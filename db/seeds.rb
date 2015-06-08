@@ -29,6 +29,8 @@ Course.create({number: 'RUBY DL310',
 jsmith = Student.create({number: '1805122301', first_name: 'Joseph', last_name: 'Smith'})
 ehale = Student.create({number: '1804071001', first_name: 'Emma', last_name: 'Hale'})
 byoung = Student.create({number: '1801060101', first_name: 'Birgham', last_name: 'Young'})
+jku = Student.create({number: '2015060701', first_name: 'Joseph', last_name: 'Ku'})
+mquark = Student.create({number: '2015060702', first_name: 'Mel', last_name: 'Quark'})
 
 # Create some accounts
 Account.create({email: Rails.application.secrets.admin_email,
@@ -47,3 +49,11 @@ Account.create({email: 'byoung@zion.edu',
                 password: 'password',
                 password_confirmation: 'password',
                 student: byoung})
+Account.create({email: 'cmuboy@yahoo.com',
+                password: 'password',
+                password_confirmation: 'password',
+                student: jku})
+Account.create({email: 'mel.quark@gmail.com',
+                password: 'password',
+                password_confirmation: 'password',
+                student: mquark})
